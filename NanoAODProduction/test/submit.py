@@ -43,7 +43,7 @@ for dataset in inputDatasets:
     dataset = dataset.strip()
     print(dataset)
 
-    config.General.requestName = dataset.split("/")[1] + "_" + dataset.split("/")[2].split("-")[0]
+    config.General.requestName = (dataset.split("/")[1] + "_" + dataset.split("/")[2].split("-")[0])[:100]
     print(config.General.requestName)
 
     config.Data.inputDataset = dataset
