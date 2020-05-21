@@ -1,11 +1,14 @@
 from CRABClient.UserUtilities import config, getUsernameFromCRIC
 
+samples_list = 'samples2016.txt'
 #samples_list = 'samples2017.txt'
-samples_list = 'samples2018.txt'
+#samples_list = 'samples2018.txt'
+pset_file = 'nano_production_mc_2016_NANO.py'
 #pset_file = 'nano_production_mc_2017_NANO.py'
-pset_file = 'nano_production_mc_2018_NANO.py'
+#pset_file = 'nano_production_mc_2018_NANO.py'
+out_dataset_tag = 'VVjj_2016v6'
 #out_dataset_tag = 'VVjj_2017v6'
-out_dataset_tag = 'VVjj_2018v6'
+#out_dataset_tag = 'VVjj_2018v6'
 storage_location = '/store/group/lnujj/VVjj_aQGC/custom_nanoAOD/'
 
 config = config()
