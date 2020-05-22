@@ -1,14 +1,25 @@
 from CRABClient.UserUtilities import config, getUsernameFromCRIC
 
-samples_list = 'samples2016.txt'
-#samples_list = 'samples2017.txt'
-#samples_list = 'samples2018.txt'
-pset_file = 'nano_production_mc_2016_NANO.py'
-#pset_file = 'nano_production_mc_2017_NANO.py'
-#pset_file = 'nano_production_mc_2018_NANO.py'
-out_dataset_tag = 'VVjj_2016v6'
-#out_dataset_tag = 'VVjj_2017v6'
-#out_dataset_tag = 'VVjj_2018v6'
+year = '2018'
+#which_mc = 'sm'
+which_mc = 'aqgc'
+dryrun = True
+print_config = True
+just_print_config = True
+just_first_sample = False
+
+if which_mc == 'sm':
+    samples_list = 'samples%s.txt' % year
+    pset_file = 'nano_production_mc_%s_NANO.py' % year
+    out_dataset_tag = 'VVjj_%sv6' % year
+
+elif which_mc == 'aqgc':
+    samples_list = 'samples%s_aQGC.txt' % year
+    pset_file = 'nano_production_mc_aqgc_%s_NANO.py' % year
+    out_dataset_tag = 'VVjj_%sv6' % year
+else:
+    exit("incorrect mc choice ... exiting")
+
 storage_location = '/store/group/lnujj/VVjj_aQGC/custom_nanoAOD/'
 
 config = config()
@@ -47,8 +58,13 @@ for dataset in inputDatasets:
     print(config.General.requestName)
 
     config.Data.inputDataset = dataset
-    
-    #print(config)
-    crabCommand('submit', config=config)
-    #crabCommand('submit', '--dryrun', config=config)
-    #break
+
+    if print_config: print(config)
+    if just_print_config: continue
+
+    if dryrun:
+        crabCommand('submit', '--dryrun', config=config)
+    else:
+        crabCommand('submit', config=config)
+
+    if just_first_sample: break
