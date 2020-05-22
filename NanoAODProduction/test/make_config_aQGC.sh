@@ -1,14 +1,5 @@
 #!/bin/bash
 
-#cmsDriver.py nano_production_mc_2016_old -s NANO --mc --eventcontent NANOAODSIM --datatier NANOAODSIM --no_exec --conditions 102X_mcRun2_asymptotic_v7 --era Run2_2016,run2_miniAOD_80XLegacy \
-#-n 10 \
-#--filein  \
-#--fileout nano.root \
-#--customise_commands="process.add_(cms.Service('InitRootHandlers', EnableIMT = cms.untracked.bool(False)))\n\
-#process.genWeightsTable.debug = cms.untracked.bool(True)\n\
-#process.genWeightsTable.missingLHEHeaderFile = cms.FileInPath('VBSAnalysis/NanoAODProduction/data/')\n\
-#process.genWeightsTable.preferredPDFs = cms.VPSet(cms.PSet( name = cms.string(''), lhaid = cms.uint32()))"
-
 cmsDriver.py nano_production_mc_aqgc_2016 -s NANO --mc --eventcontent NANOAODSIM --datatier NANOAODSIM --no_exec --conditions 102X_mcRun2_asymptotic_v7 --era  Run2_2016,run2_nanoAOD_94X2016 \
 -n 10 \
 --filein /store/mc/RunIISummer16MiniAODv3/WplusTo2LZTo2JJJ_EWK_LO_aQGC_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/MINIAODSIM/PUMoriond17_94X_mcRun2_asymptotic_v3-v1/280000/F6C40845-7F18-EA11-AB34-248A07C6D770.root \
