@@ -830,7 +830,7 @@
 <weight id="ft9_m10">set param_card anoinputs 11 0.0 # orig: 6.5e-12 set param_card anoinputs 20 -1e-11 # orig: 0.0 </weight>
 <weight id="ft9_10">set param_card anoinputs 11 0.0 # orig: 6.5e-12 set param_card anoinputs 20 1e-11 # orig: 0.0 </weight>
 </weightgroup>
-<weightgroup name="Central scale variation" combine="envelope">
+<weightgroup combine="envelope" name="Central scale variation">
 <weight id="1001" MUR="1.0" MUF="1.0" PDF="292000" >  </weight>
 <weight id="1002" MUR="1.0" MUF="1.0" DYN_SCALE="1" PDF="292000" > dyn_scale_choice=sum pt  </weight>
 <weight id="1003" MUR="1.0" MUF="1.0" DYN_SCALE="2" PDF="292000" > dyn_scale_choice=HT  </weight>
@@ -1687,7 +1687,7 @@
 </weightgroup> # PDFSET -> PDF
 <weight id="1814" MUR="1.0" MUF="1.0" PDF="262400" > PDF=262400 MemberID=0 </weight>
 <weight id="1815" MUR="1.0" MUF="1.0" PDF="263400" > PDF=263400 MemberID=0 </weight>
-<weightgroup name="NNPDF30_nlo_nf_4_pdfas" combine="replicas+as"> # 292000: NNPDF3.0 NLO global fit; mem=0 to mem=100 with alphas(MZ)=0.118, mem=0 ; average on replicas 1-100; mem=1-100 ; PDF replicas with  alphas(MZ)=0.118; mem=101 ; central value for alphas=0.117; mem=102 ; central value for alphas=0.119; maximum number of active flavors NF=4
+<weightgroup combine="replicas+as" name="NNPDF30_nlo_nf_4_pdfas"> # 292000: NNPDF3.0 NLO global fit; mem=0 to mem=100 with alphas(MZ)=0.118, mem=0 ; average on replicas 1-100; mem=1-100 ; PDF replicas with  alphas(MZ)=0.118; mem=101 ; central value for alphas=0.117; mem=102 ; central value for alphas=0.119; maximum number of active flavors NF=4
 <weight id="1816" MUR="1.0" MUF="1.0" PDF="292000" >  </weight>
 <weight id="1817" MUR="1.0" MUF="1.0" PDF="292001" > PDF=292000 MemberID=1 </weight>
 <weight id="1818" MUR="1.0" MUF="1.0" PDF="292002" > PDF=292000 MemberID=2 </weight>
