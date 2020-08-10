@@ -1,11 +1,13 @@
 from CRABClient.UserUtilities import config, getUsernameFromCRIC
+import os 
 
 year = '2018'
 #which_mc = 'sm'
-which_mc = 'aqgc'
-dryrun = True
+which_mc = 'sm'
+dryrun = False
+resubmit=True
 print_config = True
-just_print_config = True
+just_print_config = False
 just_first_sample = False
 
 if which_mc == 'sm':
@@ -20,7 +22,7 @@ elif which_mc == 'aqgc':
 else:
     exit("incorrect mc choice ... exiting")
 
-storage_location = '/store/group/lnujj/VVjj_aQGC/custom_nanoAOD/'
+storage_location = '/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD'
 
 config = config()
 
@@ -41,7 +43,7 @@ config.Data.publication = True
 config.Data.outputDatasetTag = out_dataset_tag
 
 config.Data.outLFNDirBase = storage_location
-config.Site.storageSite = 'T3_US_FNALLPC'
+config.Site.storageSite = 'T2_CH_CERN'
 
 
 from CRABAPI.RawCommand import crabCommand
@@ -62,9 +64,18 @@ for dataset in inputDatasets:
     if print_config: print(config)
     if just_print_config: continue
 
-    if dryrun:
-        crabCommand('submit', '--dryrun', config=config)
+    if not resubmit:
+        if dryrun:
+            crabCommand('submit', '--dryrun', config=config)
+        else:
+            crabCommand('submit', config=config)
     else:
-        crabCommand('submit', config=config)
+        try:
+            os.chdir('crab_'+(config.General.requestName))
+            crabCommand('resubmit')
+            os.chdir("..")
+        except:
+            print("nothing to resubmit")
+            os.chdir("..")
 
     if just_first_sample: break
